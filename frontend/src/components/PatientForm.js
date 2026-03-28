@@ -22,8 +22,8 @@ const PatientForm = () => {
         name: editingPatient.name,
         age: editingPatient.age,
         gender: editingPatient.gender,
-        phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined 
-          ? editingPatient.phoneNumber 
+        phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined
+          ? String(editingPatient.phoneNumber)
           : '',
       });
     } else {
@@ -49,7 +49,7 @@ const PatientForm = () => {
 
     const submissionData = {
       ...formData,
-      phoneNumber: formData.phoneNumber.trim() === '' ? null : formData.phoneNumber,
+      phoneNumber: String(formData.phoneNumber || '').trim() === '' ? null : formData.phoneNumber,
     };
 
     if (editingPatient) {
@@ -70,7 +70,7 @@ const PatientForm = () => {
       <h2 className="text-xl font-bold mb-4 text-gray-800">
         {editingPatient ? 'Edit Patient' : 'Register New Patient'}
       </h2>
-      
+
       <form onSubmit={handleSubmit} className="space-y-4">
         {(formError || error) && (
           <div className="p-3 bg-red-50 text-red-600 rounded-lg text-sm">
@@ -122,7 +122,10 @@ const PatientForm = () => {
               className="input"
               placeholder="Phone Number"
               value={formData.phoneNumber}
-              onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+              onChange={(e) => {
+                const value = e.target.value.replace(/\D/g, '').slice(0, 15); // Only allow 15 digits
+                setFormData({ ...formData, phoneNumber: value });
+              }}
             />
           </div>
         </div>

@@ -28110,7 +28110,7 @@ const PatientForm = ()=>{
             name: editingPatient.name,
             age: editingPatient.age,
             gender: editingPatient.gender,
-            phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined ? editingPatient.phoneNumber : ''
+            phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined ? String(editingPatient.phoneNumber) : ''
         });
         else setFormData(initialFormState);
     }, [
@@ -28131,7 +28131,7 @@ const PatientForm = ()=>{
         }
         const submissionData = {
             ...formData,
-            phoneNumber: formData.phoneNumber.trim() === '' ? null : formData.phoneNumber
+            phoneNumber: String(formData.phoneNumber || '').trim() === '' ? null : formData.phoneNumber
         };
         if (editingPatient) dispatch((0, _patientSlice.updatePatient)({
             id: editingPatient._id,
@@ -28309,10 +28309,13 @@ const PatientForm = ()=>{
                                         className: "input",
                                         placeholder: "Phone Number",
                                         value: formData.phoneNumber,
-                                        onChange: (e)=>setFormData({
+                                        onChange: (e)=>{
+                                            const value = e.target.value.replace(/\D/g, '').slice(0, 15); // Only allow 15 digits
+                                            setFormData({
                                                 ...formData,
-                                                phoneNumber: e.target.value
-                                            })
+                                                phoneNumber: value
+                                            });
+                                        }
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
                                         lineNumber: 120,
@@ -28340,7 +28343,7 @@ const PatientForm = ()=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 132,
+                                lineNumber: 135,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28349,13 +28352,13 @@ const PatientForm = ()=>{
                                 children: editingPatient ? 'Save Changes' : 'Register Patient'
                             }, void 0, false, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 136,
+                                lineNumber: 139,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/PatientForm.js",
-                        lineNumber: 130,
+                        lineNumber: 133,
                         columnNumber: 9
                     }, undefined)
                 ]
