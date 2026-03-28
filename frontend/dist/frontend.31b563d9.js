@@ -28105,24 +28105,14 @@ const PatientForm = ()=>{
     };
     const [formData, setFormData] = (0, _react.useState)(initialFormState);
     const [formError, setFormError] = (0, _react.useState)('');
-    const nameInputRef = (0, _react.useRef)(null);
     (0, _react.useEffect)(()=>{
-        if (editingPatient) {
-            setFormData({
-                name: editingPatient.name,
-                age: editingPatient.age,
-                gender: editingPatient.gender,
-                phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined ? editingPatient.phoneNumber : ''
-            });
-            // Scroll to form and focus name input when editing
-            if (nameInputRef.current) {
-                nameInputRef.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                nameInputRef.current.focus();
-            }
-        } else setFormData(initialFormState);
+        if (editingPatient) setFormData({
+            name: editingPatient.name,
+            age: editingPatient.age,
+            gender: editingPatient.gender,
+            phoneNumber: editingPatient.phoneNumber !== null && editingPatient.phoneNumber !== undefined ? editingPatient.phoneNumber : ''
+        });
+        else setFormData(initialFormState);
     }, [
         editingPatient
     ]);
@@ -28164,7 +28154,7 @@ const PatientForm = ()=>{
                 children: editingPatient ? 'Edit Patient' : 'Register New Patient'
             }, void 0, false, {
                 fileName: "src/components/PatientForm.js",
-                lineNumber: 78,
+                lineNumber: 70,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28176,7 +28166,7 @@ const PatientForm = ()=>{
                         children: formError || error
                     }, void 0, false, {
                         fileName: "src/components/PatientForm.js",
-                        lineNumber: 84,
+                        lineNumber: 76,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28189,11 +28179,10 @@ const PatientForm = ()=>{
                                         children: "Name *"
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 91,
+                                        lineNumber: 83,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                        ref: nameInputRef,
                                         type: "text",
                                         className: "input",
                                         placeholder: "Full Name",
@@ -28204,13 +28193,13 @@ const PatientForm = ()=>{
                                             })
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 92,
+                                        lineNumber: 84,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 90,
+                                lineNumber: 82,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28220,7 +28209,7 @@ const PatientForm = ()=>{
                                         children: "Age *"
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 103,
+                                        lineNumber: 94,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28234,13 +28223,13 @@ const PatientForm = ()=>{
                                             })
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 104,
+                                        lineNumber: 95,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 102,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28250,7 +28239,7 @@ const PatientForm = ()=>{
                                         children: "Gender *"
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 114,
+                                        lineNumber: 105,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -28266,7 +28255,7 @@ const PatientForm = ()=>{
                                                 children: "Select Gender"
                                             }, void 0, false, {
                                                 fileName: "src/components/PatientForm.js",
-                                                lineNumber: 120,
+                                                lineNumber: 111,
                                                 columnNumber: 15
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -28274,7 +28263,7 @@ const PatientForm = ()=>{
                                                 children: "Male"
                                             }, void 0, false, {
                                                 fileName: "src/components/PatientForm.js",
-                                                lineNumber: 121,
+                                                lineNumber: 112,
                                                 columnNumber: 15
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -28282,7 +28271,7 @@ const PatientForm = ()=>{
                                                 children: "Female"
                                             }, void 0, false, {
                                                 fileName: "src/components/PatientForm.js",
-                                                lineNumber: 122,
+                                                lineNumber: 113,
                                                 columnNumber: 15
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -28290,19 +28279,19 @@ const PatientForm = ()=>{
                                                 children: "Other"
                                             }, void 0, false, {
                                                 fileName: "src/components/PatientForm.js",
-                                                lineNumber: 123,
+                                                lineNumber: 114,
                                                 columnNumber: 15
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 115,
+                                        lineNumber: 106,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 113,
+                                lineNumber: 104,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28312,7 +28301,7 @@ const PatientForm = ()=>{
                                         children: "Phone (Optional)"
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 128,
+                                        lineNumber: 119,
                                         columnNumber: 13
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28326,19 +28315,19 @@ const PatientForm = ()=>{
                                             })
                                     }, void 0, false, {
                                         fileName: "src/components/PatientForm.js",
-                                        lineNumber: 129,
+                                        lineNumber: 120,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 127,
+                                lineNumber: 118,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/PatientForm.js",
-                        lineNumber: 89,
+                        lineNumber: 81,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28351,7 +28340,7 @@ const PatientForm = ()=>{
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 141,
+                                lineNumber: 132,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28360,29 +28349,29 @@ const PatientForm = ()=>{
                                 children: editingPatient ? 'Save Changes' : 'Register Patient'
                             }, void 0, false, {
                                 fileName: "src/components/PatientForm.js",
-                                lineNumber: 145,
+                                lineNumber: 136,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/PatientForm.js",
-                        lineNumber: 139,
+                        lineNumber: 130,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/PatientForm.js",
-                lineNumber: 82,
+                lineNumber: 74,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/PatientForm.js",
-        lineNumber: 77,
+        lineNumber: 69,
         columnNumber: 5
     }, undefined);
 };
-_s(PatientForm, "vbgwLdfdUGIWa5UsqW7uQS4gJqE=", false, function() {
+_s(PatientForm, "lEOQbf/MFWcqmcbToAoNzR/OQBk=", false, function() {
     return [
         (0, _reactRedux.useDispatch),
         (0, _reactRedux.useSelector)
